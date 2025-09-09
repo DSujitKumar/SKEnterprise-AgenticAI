@@ -1,0 +1,70 @@
+// ===== USAGE EXAMPLES =====
+/*
+EXAMPLE API CALLS:
+==================
+
+1. CHAT ENDPOINT - POST /api/chat
+{
+    "message": "How much did I sell this month?",
+    "session_id": "user123",
+    "user_id": "admin"
+}
+
+2. CHAT EXAMPLES:
+- "How much did I sell this month?"
+- "What are my total purchases?"
+- "Who are my top 5 customers?"
+- "Show me sales vs purchases comparison"
+- "Which supplier do I buy from most?"
+- "What's my profit this year?"
+- "Hello, how are you?"
+- "Thank you for the help"
+
+3. SUMMARY ENDPOINT - GET /api/summary
+Returns complete business overview
+
+4. HEALTH CHECK - GET /api/health
+Returns system status
+
+RESPONSE FORMAT:
+===============
+{
+    "response": "Based on your data, you sold $45,230 this month across 23 transactions...",
+    "queryType": "SALES_ANALYTICS",
+    "data": {
+        "totalRecords": 23,
+        "summary": {
+            "total_sales_amount": 45230.50,
+            "total_transactions": 23,
+            "average_sale_value": 1966.54
+        },
+        "charts": [...],
+        "data": [...]
+    },
+    "sessionId": "user123",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "executionTimeMs": 1250
+}
+
+DEPLOYMENT:
+===========
+1. Deploy as Azure Function App
+2. Set OpenAI API key in configuration
+3. Configure CORS for web access
+4. Test with Postman or curl
+
+FRONTEND INTEGRATION:
+====================
+const response = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        message: "How much did I sell this month?",
+        session_id: "user123"
+    })
+});
+
+const result = await response.json();
+console.log(result.response); // Natural language response
+console.log(result.data);     // Structured data for charts
+*/
